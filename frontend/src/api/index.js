@@ -1,7 +1,14 @@
 import axios from 'axios'
 
+// In production this MUST point to your deployed backend's full URL
+// (set VITE_API_URL in Vercel's frontend project env vars), e.g.
+// https://your-backend.vercel.app/api
+// In local dev it falls back to '/api' (proxied by vite.config.js) or
+// directly to localhost:5000.
+const baseURL = import.meta.env.VITE_API_URL || '/api'
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL,
   headers: { 'Content-Type': 'application/json' },
 })
 
